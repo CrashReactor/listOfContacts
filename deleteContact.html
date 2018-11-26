@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The deleting of contact</title>
+    <script src="src/ctrl/initialize.js"></script>
+    <script src="src/model/Contact.js"></script>
+    <script src="src/view/deleteContact.js"></script>
+    <script>
+      window.addEventListener( "load", 
+        app.view.deleteContact.setupUserInterface 
+      );
+    </script>
+  </head>
+  <body>
+    <h1>Delete a contact record</h1>
+    <form id="Contact">
+      <p>
+        <label>
+          Select contact:
+          <select name="selectContact">
+            <option value=""> --- </option>
+          </select>
+        </label>
+      </p>
+      <p>
+        <button type="button" name="commit">Delete</button>
+      </p>
+    </form>
+    <nav>
+      <a href="index.html">Back to main menu</a>
+    </nav>
+  </body>
+</html>

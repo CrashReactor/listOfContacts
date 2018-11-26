@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Create Contact</title>
+    <script src="src/ctrl/initialize.js"></script>
+    <script src="src/model/Contact.js"></script>
+    <script src="src/view/createContact.js"></script>
+    <script>
+      window.addEventListener( "load", 
+        app.view.createContact.setupUserInterface
+      );
+    </script>
+  </head>
+  <body>
+    <h1>Create a new contact record</h1>
+    <form id="Contact">
+      <p>
+        <label>
+          ID: <output name="id"></output>
+        </label>
+      </p>  
+      <p>
+        <label>
+          Name: <input name="name" />
+        </label>
+      </p> 
+      <p>
+        <label>
+          Username: <input name="username" />
+        </label>
+      </p> 
+      <p>
+        <label>
+          Email: <input name="email" />
+        </label>
+      </p>  
+      <p>
+        <label>
+          Phone: <input name="phone" />
+        </label>
+      </p> 
+      <p>
+        <label>
+          Website: <input name="website" />
+        </label>
+      </p> 
+      <p>
+        <label>
+          Favorite: <input name="favorite" />
+        </label>
+      </p> 
+      <p>
+        <label>
+          Avatar: <input name="avatar" />
+        </label>
+      </p> 
+      <p>
+        <label>
+          Address: <input name="address" />
+        </label>
+      </p> 
+      <p>
+        <label>
+          Company: <input name="company" />
+        </label>
+      </p> 
+      <p>
+        <label>
+          Posts: <input name="posts" />
+        </label>
+      </p> 
+      <p>
+        <label>
+          Account History: <input name="accountHistory" />
+        </label>
+      </p> 
+      <p>
+        <button type="button" name="commit">Save</button>
+      </p>
+    </form>
+    <nav>
+      <a href="index.html">Back to main menu</a> 
+    </nav>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The list of contacts Web-Applicaion</title>
+    <script src="src/model/Contact.js"></script>
+  </head>
+  <body>
+    <h1>List of contacts</h1>
+    <h2>Web Application</h2>
+    <nav>
+      <ul>
+        <li>
+          <a href="listContacts.html">
+            <button type="button">
+              List of all contacts
+            </button>
+          </a>
+        </li> 
+        <li>
+          <a href="createContact.html">
+            <button type="button">
+              Add a new contact 
+            </button>
+          </a>
+        </li> 
+        <li>
+          <a href="updateContact.html">
+            <button type="button">
+              Update a contact 
+            </button>
+          </a>
+        </li> 
+        <li>
+          <a href="deleteContact.html">
+            <button type="button">
+              Delete a contact
+            </button>
+          </a>
+        </li> 
+        <li>
+          <button type="button" onclick="Contact.clearData()">
+            Clear database
+          </button>
+        </li> 
+        <li>
+          <button type="button" onclick="Contact.createTestData()">
+            Create test data
+          </button>
+        </li> 
+      </ul>
+    </nav>
+  </body>
+</html> 

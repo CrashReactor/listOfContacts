@@ -1,0 +1,171 @@
+function Contact( slots ) {
+  this.id       = slots.id;
+  this.name     = slots.name;
+  this.username = slots.username;
+  this.email    = slots.email;
+  this.phone    = slots.phone;
+  this.website  = slots.website;
+  this.company  = slots.company;
+  this.favorite = slots.favorite;
+  this.avatar   = slots.avatar;
+
+  //this.posts = slots.posts;
+  //this.accountHistory = slots.accountHistory;
+  //this.address = slots.address; 
+}
+
+
+Contact.instances = {};
+
+Contact.add = function ( slots ) {
+  var contact = new Contact( slots );
+
+  Contact.instances[ slots.id ] = contact;
+  console.log( "Contact " + slots.id + " created!" );
+};
+
+Contact.convertRow2Obj = function ( contactRow ) {
+  var contact = new Book( contactRow );
+  return contact;
+};
+
+Contact.loadAll = function () {
+  var 
+    contactsString = "",
+    contacts       = {},
+    keys           = [],
+    key            = "",
+    i
+  ;
+
+  try {
+    if ( localStorage["contacts"] ) {
+      contactsString = localStorage[ "contacts" ];
+      
+    }
+  } catch ( e ) {
+    alert( "Error when reading from Local Storage\n" + e );
+  }
+
+  if ( contactsString ) {
+    contacts = JSON.parse( contactsString );
+    keys = Object.keys( contacts );
+
+    console.log( keys.length + " contacts loaded." );
+
+    for ( i = 0; i < keys.length; i++ ) {
+      key = keys[ i ];
+      Contact.instances[ key ] = Contact.convertRow2Obj( contacts[key] );
+    }
+  }
+};
+
+
+Contact.update = function ( slots ) {
+  var contact = Contact.instances[ slots.id ];
+
+  if ( contact.name !== slots.name ) {
+    contact.name = slots.name;
+  } 
+  else if ( contact.username !== slots.username ) {
+    contact.username = slots.username ;
+  } 
+  else if ( contact.email !== slots.email ) {
+    contact.email = slots.email ;
+  } 
+  else if ( contact.phone !== slots.phone ) {
+    contact.phone = slots.phone ;
+  } 
+  else if ( contact.website !== slots.website ) {
+    contact.website = slots.website ;
+  }  
+  else if ( contact.company !== slots.company ) {
+    contact.company = slots.company ;
+  } 
+  else if ( contact.favorite !== slots.favorite ) {
+    contact.favorite = slots.favorite ;
+  }  
+  else if ( contact.avatar !== slots.avatar ) {
+    contact.avatar = slots.avatar ;
+  }  
+
+  /*
+  else if ( contact.posts !== slots.posts ) {
+    contact.posts= slots.posts;
+  } 
+  else if ( contact.accountHistory !== slots.accountHistory ) {
+    contact.accountHistroy = slots.accountHistory;
+  }  
+  else if ( contact.address !== slots.address ) {
+    contact.address = slots.address;
+  }  
+  */
+  console.log( "Contact " + slots.id + " modified!" );
+};
+
+
+Contact.destroy = function ( id ) {
+  if ( Contact.instances[id] ) {
+    console.log( "Contact " + id + " deleted." );
+
+    delete Contact.instances[ id ];
+  } 
+  else {
+    console.log( "There is no contact with ID " + id + " in the database!" );
+  }
+};
+
+
+
+Contact.saveAll = function () {
+  var
+    contactsString = "",
+    nmrOfContacts  = Object.keys( Contact.instances ).length,
+    error          = false
+  ;
+
+  try {
+    contactsString = JSON.stringify( Contact.instances );
+    localStorage[ "contacts" ] = contactsString;
+    console.log( "Saved" );
+  } catch ( e ) {
+    alert( "Error when writing to Local Storage\n" + e );
+    error = true;
+  }
+
+  if ( !error ) {
+    console.log( nmrOfContacts + " contacts saved." );
+  }
+};
+
+
+Contact.createTestData = function () {
+  Contact.instances[ "777" ] = new Contact({ 
+    id       : "777", 
+    name     : "No Algo importante",
+    username : "aaa",
+    email    : "xxx@zzz.com",
+    phone    : "222-111",
+    website  : "www.zzz.com",
+    company  : "TT",
+    favorite : "ppp",
+    avatar   : "o_o"
+
+    /*
+    posts : "",
+    accoiuntHistory : "",
+    address : ""
+    */
+  });
+  Contact.saveAll();
+};
+
+
+
+Contact.clearData = function () {
+  if ( confirm("Delete?") ) {
+    localStorage[ "contacts" ] = "{}";
+  }
+};
+
+
