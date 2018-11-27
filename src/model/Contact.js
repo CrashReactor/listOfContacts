@@ -181,7 +181,7 @@ Contact.createTestData = function () {
     }
   };
 
-  xhttp.open( "GET", "http://demo.sibers.com/users" );
+  xhttp.open( "GET", "https://api.myjson.com/bins/115q22");
   xhttp.send();
 };
 
